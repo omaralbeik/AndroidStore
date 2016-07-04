@@ -16,74 +16,72 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:hint="Product Name"/>
-
-        <EditText
-            android:id="@+id/qtyEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:layout_marginBottom="10dp"
-            android:hint="Quantity"/>
+            android:hint="Product Name"
+            android:maxLines="1" />
 
         <EditText
             android:id="@+id/priceEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:hint="Price"
             android:inputType="numberDecimal"
-            android:layout_marginBottom="10dp"
-            android:hint="Price"/>
+            android:maxLines="1" />
 
         <EditText
+            android:id="@+id/qtyEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
+            android:hint="Quantity"
+            android:inputType="number"
+            android:maxLines="1" />
+
+
+        <EditText
             android:id="@+id/supplierNameEditText"
-            android:hint="Supplier Name"/>
-
-        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
+            android:hint="Supplier Name"
+            android:maxLines="1" />
+
+        <EditText
             android:id="@+id/supplierEmailEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:hint="Supplier Email"
             android:inputType="textEmailAddress"
-            android:hint="Supplier Email"/>
+            android:maxLines="1" />
 
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:scaleType="centerCrop"
-            />
+            android:scaleType="centerCrop" />
 
         <Button
-            android:layout_marginTop="16dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
             android:id="@+id/addImageButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add Image"/>
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="16dp"
+            android:text="Add Image" />
 
         <Button
-            android:layout_marginTop="16dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginBottom="50dp"
-            android:shadowColor="#00C853"
-            android:layout_marginRight="30dp"
             android:id="@+id/saveButton"
-            android:background="#00C853"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/white"
-            android:text="Save"/>
-
-
-
-
-
-
-
+            android:layout_marginBottom="50dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="16dp"
+            android:background="#00C853"
+            android:shadowColor="#00C853"
+            android:text="Save"
+            android:textColor="@android:color/white" />
 
 
     </LinearLayout>

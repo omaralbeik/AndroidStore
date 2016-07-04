@@ -149,29 +149,34 @@ public class AddActivity extends AppCompatActivity {
             // product name has been used before
             showToast(nameEditText.getText().toString().trim() + " is available in the store, try another name!");
             return false;
+        } else {
+            priceEditText.requestFocus();
         }
+
 
         if (isEmpty(priceEditText)) {
             showToast("Please enter price and try again!");
-            priceEditText.requestFocus();
             return false;
+        } else {
+            qtyEditText.requestFocus();
         }
 
         if (isEmpty(qtyEditText)) {
             showToast("Please enter quantity and try again!");
-            qtyEditText.requestFocus();
             return false;
+        } else {
+            supplierNameEditText.requestFocus();
         }
 
         if (isEmpty(supplierNameEditText)) {
             showToast("Please enter supplier name and try again!");
-            supplierNameEditText.requestFocus();
             return false;
+        } else {
+            supplierEmailEditText.requestFocus();
         }
 
         if (isEmpty(supplierEmailEditText)) {
             showToast("Please enter supplier email and try again!");
-            supplierEmailEditText.requestFocus();
             return false;
         }
 
