@@ -5,21 +5,23 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 
 import com.example.android.androidstore.Product;
+import com.example.android.androidstore.R;
 
 import java.util.ArrayList;
 
 /**
- *
  * Created by omar on 7/4/16.
  */
 
 public class DbHelper extends SQLiteOpenHelper {
 
+    public SQLiteDatabase db;
     private Context context;
     private ContentValues values;
-    public SQLiteDatabase db;
 
     public DbHelper(Context context) {
         super(context, DbContract.DATABASE_NAME, null, DbContract.DATABASE_VERSION);
@@ -43,6 +45,20 @@ public class DbHelper extends SQLiteOpenHelper {
         insertProduct(product.getName(), product.getPrice(), product.getQuantity(), product.getSupplierName(), product.getSupplierEmail(), product.getImage());
     }
 
+    public void populateTextProducts() {
+
+        Bitmap image1 = BitmapFactory.decodeResource(context.getResources(), R.drawable.iphone_5c);
+        Bitmap image2 = BitmapFactory.decodeResource(context.getResources(), R.drawable.galaxy_s7);
+        Bitmap image3 = BitmapFactory.decodeResource(context.getResources(), R.drawable.htc_10);
+
+        Product product1 = new Product("iPhone 5C", 599.99, 30, "Apple inc", "sales@apple.com", Product.encodeBitmap(image1));
+        Product product2 = new Product("Galaxy s7", 799.99, 30, "Samsung", "sales@samsung.com", Product.encodeBitmap(image2));
+        Product product3 = new Product("HTC 10", 499.99, 30, "HTC", "sales@htc.com", Product.encodeBitmap(image3));
+
+        insertProduct(product1);
+        insertProduct(product2);
+        insertProduct(product3);
+    }
 
 
     public void insertProduct(String name, double price, int quantity, String supplierName, String supplierEmail, byte[] image) {
@@ -80,9 +96,19 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL(update);
     }
 
+    public void decreaseQuantity(String name) {
+        int currentQty = getProduct(name).getQuantity();
+        updateQuantity(name, currentQty - 1);
+    }
+
+    public void increaseQuantity(String name) {
+        int currentQty = getProduct(name).getQuantity();
+        updateQuantity(name, currentQty + 1);
+    }
+
     // get a product from the table
     public Product getProduct(String name) {
-        Cursor cursor = db.rawQuery("SELECT * FROM " + DbContract.TABLE_NAME + " WHERE " +  DbContract.COL_NAME + " = " + "\"" + name + "\";", null);
+        Cursor cursor = db.rawQuery("SELECT * FROM " + DbContract.TABLE_NAME + " WHERE " + DbContract.COL_NAME + " = " + "\"" + name + "\";", null);
         cursor.moveToFirst();
         return getProductFromCursor(cursor);
     }

@@ -1,5 +1,10 @@
 package com.example.android.androidstore;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+
+import java.io.ByteArrayOutputStream;
+
 /**
  *
  * Created by omar on 7/3/16.
@@ -55,10 +60,27 @@ public class Product {
         return image;
     }
 
+    public Bitmap getBitmapImage() {
+
+        if (image == null || image.length == 0) {
+            return null;
+        }
+
+        return BitmapFactory.decodeByteArray(image , 0, image .length);
+    }
+
     @Override
     public String toString() {
         return "name: " + name + "\t" + "price: " + "\t" +
                 "available quantity: " + quantity + "\t" +
                 "supplier name: " + supplierName + "\t" + "supplier email: " + supplierEmail;
+    }
+
+
+    public static byte[] encodeBitmap(Bitmap image) {
+        // Convert Bitmap to byte array
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        image.compress(Bitmap.CompressFormat.PNG, 0, stream);
+        return stream.toByteArray();
     }
 }
